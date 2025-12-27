@@ -1,4 +1,4 @@
-# 📊 基于生存分析与机器学习的中国创业公司存活周期研究
+#  基于生存分析与机器学习的中国创业公司存活周期研究
 
 > **2025 秋《基于 Python 的问题解析》期末大作业** > **学生姓名**：肖浙俊  
 > **学号**：2025104263  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📖 1. 项目简介 (Project Introduction)
+##  1. 项目简介 (Project Introduction)
 
 本项目通过分析一份包含 **6,271 家已倒闭中国创业公司** 的数据集 (`com.csv`)，旨在探究影响初创企业存活时长的关键因素，并构建预测模型。
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 🔍 3. 探索性数据分析 (Exploratory Data Analysis)
+##  3. 探索性数据分析 (Exploratory Data Analysis)
 
 在进入建模之前，我们对数据进行了深入清洗与可视化，发现了以下宏观趋势：
 
@@ -30,7 +30,7 @@
 
 ---
 
-## 📈 4. 生存分析建模 (Survival Analysis)
+##  4. 生存分析建模 (Survival Analysis)
 
 本项目采用半参数模型 **Cox Proportional Hazards Model (CPH)** 进行风险建模。
 
@@ -46,7 +46,7 @@
 
 ---
 
-## 🤖 5. 机器学习预测 (Machine Learning Prediction)
+##  5. 机器学习预测 (Machine Learning Prediction)
 
 为了弥补生存分析无法给出确切寿命值的局限，我们将问题转化为**回归任务**，预测具体的 `live_days`。
 
@@ -63,7 +63,7 @@
 
 ---
 
-## 📂 6. 项目文件结构 (File Structure)
+##  6. 项目文件结构 (File Structure)
 
 ```text
 ├── data/
@@ -72,3 +72,4 @@
 ├── python_homework.ipynb       # 核心分析代码 (Jupyter Notebook)
 ├── README.md                   # 项目说明文档
 └── requirements.txt            # 项目依赖库列表
+
