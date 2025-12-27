@@ -18,50 +18,35 @@
 
 ---
 
-##  3. 探索性数据分析 (Exploratory Data Analysis)
+## 2. 运行环境与依赖 (Environment & Dependencies)
 
-在进入建模之前，我们对数据进行了深入清洗与可视化，发现了以下宏观趋势：
+本项目基于 **Python 3.8+** 开发。为确保代码能够完整复现，请安装以下第三方库。
 
-* **死亡之谷 (Valley of Death)**：企业的存活天数呈显著右偏分布，中位数约为 **3年**（~1100天）。大量企业在成立后的前三年内倒闭。
-* **资本的马太效应**：融资轮次与存活时间呈强正相关。获投轮次越靠后（如 C 轮、D 轮），企业的生存周期越长且方差越大。
-* **死因分析**：
-    * **商业模式匮乏 (Business Model Failure)** 是导致失败的首要原因，远高于单纯的“资金链断裂”。
-    * 行业差异显著：**金融**行业受政策监管影响最大，而**电商**行业则更多死于激烈的市场竞争。
-
----
-
-##  4. 生存分析建模 (Survival Analysis)
-
-本项目采用半参数模型 **Cox Proportional Hazards Model (CPH)** 进行风险建模。
-
-### 核心发现
-* **模型精度**：C-index 达到 **0.8938**，表明模型具有极高的区分度。
-* **关键风险因子**：
-    * **资金保护作用**：获得融资可使企业的瞬时死亡风险降低约 **14%** (`HR=0.86`)。
-    * **地域不平等**：相比一线城市，内陆地区（如四川）的企业面临高出 **27%** 的死亡风险 (`HR=1.27`)。
-
-### 模型诊断 (Model Diagnostics)
-通过 **Schoenfeld 残差检验**，我们发现“是否有融资”这一变量违反了比例风险假设。
-> **洞察**：资金的保护作用具有**时间依赖性 (Time-dependent Effect)**——它在创业早期最强，但随着企业成熟，资金光环逐渐褪去，运营能力成为主导。
+### 核心依赖库
+* **Data Processing**: `pandas` (>=1.3.0), `numpy` (>=1.20.0)
+* **Visualization**: `matplotlib` (>=3.4.0), `seaborn` (>=0.11.0)
+* **Survival Analysis**: `lifelines` (>=0.26.0)
+* **Machine Learning**: `xgboost` (>=1.5.0), `scikit-learn` (>=1.0.0)
 
 ---
 
-##  5. 机器学习预测 (Machine Learning Prediction)
+## 3. 复现步骤 (How to Reproduce)
 
-为了弥补生存分析无法给出确切寿命值的局限，我们将问题转化为**回归任务**，预测具体的 `live_days`。
+1. **克隆仓库**：
+   ```bash
+   git clone https://github.com/Palletteft/Startup-Survival-Analysis/edit/main/requirements.txt
 
-### 模型对比与调优
-我们对比了 **Random Forest** 和 **XGBoost** 两种集成算法：
+2. **准备数据**：确保 com.csv 位于项目根目录。
 
-| 模型 | 特点 | 表现 |
-| :--- | :--- | :--- |
-| **Random Forest** | Bagging 方法，抗过拟合能力强 | 表现良好，但对稀疏特征处理一般 |
-| **XGBoost** | Boosting 方法，支持缺失值处理 | **最优 (Best Performance)**，RMSE 最低 |
+3. **运行代码**：
 
-### 调参结果
-通过 `GridSearchCV` 对 `max_depth` 和 `n_estimators` 进行网格搜索，最优参数组合为 `depth=6`, `estimators=300`。模型在捕捉行业与融资之间的非线性交互作用方面表现出色。
+* 使用 Jupyter Notebook 打开 python_homework.ipynb。
 
+* 点击 "Run All"。
+
+4. **查看结果** ：代码将自动输出 Cox 回归报告、特征重要性排序及预测误差分析图。
 ---
+
 
 
 
