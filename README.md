@@ -63,13 +63,6 @@
 
 ---
 
-##  6. 项目文件结构 (File Structure)
 
-```text
-├── data/
-│   └── com.csv                 # 原始数据集 (需放置于此或根目录)
-├── images/                     # 分析过程中生成的图表 (如 KM曲线, 残差图)
-├── python_homework.ipynb       # 核心分析代码 (Jupyter Notebook)
-├── README.md                   # 项目说明文档
-└── requirements.txt            # 项目依赖库列表
+
 
